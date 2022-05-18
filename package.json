@@ -1,20 +1,19 @@
 {
-  "name": "koa-framework",
+  "name": "rurich-koa-framework",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple framework using Koa and Typescript",
   "scripts": {
     "build": "tsc",
     "start": "node bin/index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Roger Urich",
+  "license": "MIT",
   "dependencies": {
     "koa": "2.13.4",
-    "typescript": "^4.6.4"
+    "typescript": "4.6.4"
   },
   "devDependencies": {
-    "@types/koa": "^2.13.4"
+    "@types/koa": "2.13.4"
   }
 }
