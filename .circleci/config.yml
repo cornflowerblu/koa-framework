@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: node:lts-alpine
       - image: mysql:oracle
-        ports:
-          - 5000:3306
         environment:
           MYSQL_ROOT_PASSWORD: 'prisma'
           MYSQL_DATABASE: 'tests'
