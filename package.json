@@ -6,13 +6,17 @@
     "rimraf": "rm -rf bin && rm -rf tsconfig.tsbuildinfo",
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
-    "test": "jest",
-    "build": "npm run prettier && tsc && rm -rf bin/test",
+    "test": "jest && npx prettier --check ./src",
+    "build": "tsc && rm -rf bin/test",
     "start": "node bin/server.js"
   },
   "keywords": [],
   "author": "Roger Urich",
   "license": "MIT",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
