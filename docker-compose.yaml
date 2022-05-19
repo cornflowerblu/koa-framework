@@ -14,7 +14,3 @@ services:
       MYSQL_DATABASE: 'tests'
     depends_on: 
       - app
-  app:
-    image: httpd
-    container_name: BS
-    
