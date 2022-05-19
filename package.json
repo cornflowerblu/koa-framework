@@ -13,10 +13,6 @@
   "keywords": [],
   "author": "Roger Urich",
   "license": "MIT",
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "jest": {
     "moduleFileExtensions": [
       "js",
