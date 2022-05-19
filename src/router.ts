@@ -12,6 +12,7 @@ type Routes = {
   path: string
 }
 
+// Routing function that lets us use custom objects with human-friendly names and anything else we may want down the line
 export const getRoute = (name: string): string => {
   let routeName = routes.find((el) => el.name === name)
   invariant(routeName)
@@ -20,6 +21,7 @@ export const getRoute = (name: string): string => {
 
 export const router = new Router()
 
+// The list of routes. Name and Path are required. 
 const routes: Array<Routes> = [
   {
     name: 'home page protected',
@@ -39,6 +41,7 @@ const routes: Array<Routes> = [
   },
 ]
 
+// Look how easy these are to read!
 router.get(getRoute('home page protected'), (ctx: Koa.Context) =>
   getProtectedHomepage(ctx)
 )
