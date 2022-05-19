@@ -5,6 +5,7 @@
   "scripts": {
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
+    "test": "jest",
     "build": "npm run prettier && tsc",
     "start": "node bin/server.js"
   },
@@ -27,7 +28,7 @@
     "collectCoverageFrom": [
       "**/*.{ts,js}",
       "!**/node_modules/**",
-      "!**/build/**",
+      "!**/bin/**",
       "!**/coverage/**"
     ],
     "transform": {
@@ -60,6 +61,7 @@
   "devDependencies": {
     "@types/jest": "^27.5.1",
     "@types/koa": "2.13.4",
+    "@types/supertest": "^2.0.12",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
     "supertest": "^6.2.3",
