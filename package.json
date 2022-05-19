@@ -6,7 +6,7 @@
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
     "test": "jest",
-    "build": "npm run prettier && tsc",
+    "build": "npm run prettier && tsc && rm -rf bin/test",
     "start": "node bin/server.js"
   },
   "keywords": [],
