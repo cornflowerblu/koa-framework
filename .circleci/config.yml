@@ -19,4 +19,4 @@ jobs:
 workflows:
   build-image:
     jobs:
-      - example-job
+      - build-image
