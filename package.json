@@ -4,9 +4,9 @@
   "description": "A simple framework using Koa and Typescript",
   "scripts": {
     "prettier": "npx prettier --write ./src",
-    "dev": "tsnd --respawn src/index.ts",
+    "dev": "tsnd --respawn src/server.ts",
     "build": "npm run prettier && tsc",
-    "start": "node bin/index.js"
+    "start": "node bin/server.js"
   },
   "keywords": [],
   "author": "Roger Urich",

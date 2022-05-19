@@ -8,4 +8,6 @@ router.get('/', (ctx: Koa.Context) => {
     ctx.body = 'Hello World'
 })
 
+app.use(router.routes())
+
 export default app
