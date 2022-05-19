@@ -8,10 +8,10 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build-image:
+  build:
     docker:
       # replace with your preferred image
-      - image: cimg/base:stable
+      - image: node:lts-alpine
     steps:
       - docker/build:
           image: koa-framework 
@@ -19,4 +19,4 @@ jobs:
 workflows:
   build-image:
     jobs:
-      - build-image
+      - build
