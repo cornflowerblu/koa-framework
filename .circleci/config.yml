@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:lts-alpine
-      - image: mysql:oracle
+      image: node:lts-alpine
+      image: mysql:oracle
       container_name: integration-tests
       ports:
         - '5000:3306'
