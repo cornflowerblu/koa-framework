@@ -55,14 +55,17 @@
     ]
   },
   "dependencies": {
+    "@hapi/boom": "^10.0.0",
     "@types/koa-router": "7.4.4",
     "koa": "2.13.4",
+    "koa-json": "^2.0.2",
     "koa-router": "10.1.1",
     "tiny-invariant": "1.2.0"
   },
   "devDependencies": {
     "@types/jest": "27.5.1",
     "@types/koa": "2.13.4",
+    "@types/koa-json": "^2.0.20",
     "@types/supertest": "2.0.12",
     "jest": "28.1.0",
     "prettier": "2.6.2",

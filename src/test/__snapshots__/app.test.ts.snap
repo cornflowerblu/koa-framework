@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Hello world works 1`] = `"Hello World"`;
+exports[`Hello world works 1`] = `
+"{
+  \\"statusCode\\": 403,
+  \\"error\\": \\"Forbidden\\",
+  \\"message\\": \\"Forbidden\\"
+}"
+`;
