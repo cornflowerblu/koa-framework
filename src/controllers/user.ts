@@ -1,6 +1,6 @@
 import Koa from 'koa'
 import Boom from '@hapi/boom'
-import { getUsers, createUser, UserReturn } from '../models/user'
+import { getUsers, createUser, UserReturn, getUserById } from '../models/user'
 import { User } from '@prisma/client'
 
 export async function createNewUser(ctx: Koa.Context) {
@@ -44,6 +44,31 @@ export async function getManyUsers(ctx: Koa.Context) {
       (ctx.body = {
         success: false,
         users: Boom.notFound().output.payload,
+      })
+  }
+}
+
+export async function getSingleUserById(ctx: Koa.Context) {
+  try {
+    const user = await getUserById(parseInt(ctx.path.slice(7, 9)))
+    if (user.id !== undefined) {
+      ctx.body = {
+        success: true,
+        user,
+      }
+    } else {
+      ;(ctx.status = 404),
+        (ctx.body = {
+          success: false,
+          user,
+        })
+    }
+  } catch (error) {
+    console.log(error)
+    ;(ctx.status = 500),
+      (ctx.body = {
+        success: false,
+        user: Boom.internal(),
       })
   }
 }

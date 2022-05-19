@@ -14,12 +14,24 @@ export type UserReturn<T> = {
 export const getUsers = async (): Promise<Array<User>> =>
   await prisma.user.findMany()
 
-export const getUserById = async (id: number): Promise<User | null> =>
-  await prisma.user.findUnique({
-    where: {
-      id: id,
-    },
-  })
+export const getUserById = async (id: number): Promise<any> => {
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        id: id,
+      },
+    })
+    return {
+      id: user?.id,
+      name: user?.name,
+      email: user?.email,
+      role: user?.role,
+    }
+  } catch (error) {
+    console.log(error)
+    return Boom.badRequest().output.payload
+  }
+}
 
 export const createUser = async (user: User): Promise<any> => {
   const securePassword = await bcrypt.hash(user.password, 10)
@@ -33,6 +45,7 @@ export const createUser = async (user: User): Promise<any> => {
       },
     })
     return {
+      id: user.id,
       name: user.name,
       email: user.email,
       role: user.role,

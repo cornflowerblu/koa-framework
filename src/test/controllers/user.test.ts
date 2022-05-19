@@ -3,6 +3,7 @@ import app from '../../app'
 import { getRoute } from '../../router'
 import faker from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
+import { createUser } from '../../models/user'
 
 const prisma = new PrismaClient()
 prisma.$connect
@@ -47,7 +48,35 @@ describe('User API', () => {
     expect(response.status).toBe(200)
     expect(response.text).toContain('success')
     expect(response.text).toContain('true')
-    expect(response.body.users[0].id).toBeGreaterThan(1)
+    expect(response.body.users.length).toBeGreaterThan(0)
+  })
+
+  test('Get single user endpoint retrieves only one user', async () => {
+    const user = await createUser({
+      id: 1,
+      email: faker.internet.email(),
+      name: faker.name.firstName(),
+      password: faker.random.alphaNumeric(),
+      role: 'USER',
+    })
+
+    const response = await request(app.callback()).get(`/users/${user.id}`)
+    expect(response.status).toBe(200)
+    expect(response.text).toContain('success')
+    expect(response.text).toContain('true')
+    expect(response.body.user).toMatchObject({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: 'USER',
+    })
+  })
+
+  test('Get single user but none is found', async () => {
+    const response = await request(app.callback()).get(`/users/a`)
+    expect(response.status).toBe(404)
+    expect(response.text).toContain('success')
+    expect(response.text).toContain('false')
   })
 
   test('Get users endpoint should return 404 if none are found', async () => {

@@ -1,7 +1,11 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 import invariant from 'tiny-invariant'
-import { createNewUser, getManyUsers } from './controllers/user'
+import {
+  createNewUser,
+  getManyUsers,
+  getSingleUserById,
+} from './controllers/user'
 import {
   getProtectedHomepage,
   getUnprotectedHomepage,
@@ -39,6 +43,10 @@ const routes: Array<Routes> = [
     name: 'get all users',
     path: '/users',
   },
+  {
+    name: 'get single user',
+    path: '/users/:id',
+  },
 ]
 
 // Look how easy these are to read!
@@ -50,10 +58,15 @@ router.get(getRoute('landing page un-protected'), (ctx: Koa.Context) =>
   getUnprotectedHomepage(ctx)
 )
 
+// Users
 router.post(getRoute('create new user'), (ctx: Koa.Context) =>
   createNewUser(ctx)
 )
 
 router.get(getRoute('get all users'), (ctx: Koa.Context) => getManyUsers(ctx))
+
+router.get(getRoute('get single user'), async (ctx: Koa.Context) =>
+  getSingleUserById(ctx)
+)
 
 export default routes
