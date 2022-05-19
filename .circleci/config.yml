@@ -6,7 +6,7 @@ jobs:
       - image: mysql:oracle
       container_name: integration-tests
       ports:
-      - '5000:3306'
+        - '5000:3306'
       environment:
         MYSQL_ROOT_PASSWORD: 'prisma'
         MYSQL_DATABASE: 'tests'
