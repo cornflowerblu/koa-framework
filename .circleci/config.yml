@@ -12,7 +12,9 @@ jobs:
           docker_layer_caching: true
       - run:
           name: Install Docker & Compose
-          command: apk add docker docker-compose
+          command: |
+           apk add docker docker-compose
+           docker-compose up -d
       - run:
           name: Install Docker client
           command: |
@@ -39,4 +41,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm run ci:test
+      - run:
+        name: Integration Tests
+        command: |
+          la -lah
+          npm ci:migrate
+          npm ci:test
