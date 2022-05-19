@@ -11,7 +11,9 @@ jobs:
 
       - setup_remote_docker:
           docker_layer_caching: true
-
+      - run:
+          name: Install Docker & Compose
+          command: apk add docker docker-compose
       - run:
           name: Install Docker client
           command: |
