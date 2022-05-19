@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Unauthorized page works 1`] = `
+exports[`Un-protected page returns a response 1`] = `"Hi!"`;
+
+exports[`Unauthorized page throws 403 1`] = `
 "{
   \\"statusCode\\": 403,
   \\"error\\": \\"Forbidden\\",
   \\"message\\": \\"Forbidden\\"
 }"
 `;
-
-exports[`landing page un-protected works 1`] = `"Hi!"`;
