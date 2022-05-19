@@ -2,7 +2,7 @@ import { createUser, getUserById, getUsers } from '../../models/user'
 import { faker } from '@faker-js/faker'
 
 beforeAll(async () => {
-  await createUser({
+  const user1: any = await createUser({
     id: 0,
     email: faker.internet.email(),
     name: faker.name.firstName(),
@@ -10,7 +10,7 @@ beforeAll(async () => {
     role: 'USER',
   })
 
-  await createUser({
+  const user2: any = await createUser({
     id: 1,
     email: faker.internet.email(),
     name: faker.name.firstName(),
@@ -18,7 +18,7 @@ beforeAll(async () => {
     role: 'USER',
   })
 
-  console.log(`Two Users were created!`)
+  console.log(`Two Users ${user1.name} and ${user2.name} were created!`)
 })
 
 it('should retrieve one user', async () => {
@@ -27,5 +27,8 @@ it('should retrieve one user', async () => {
 })
 
 it('should retrieve many users', async () => {
+  const users = await getUsers()
+  expect(users[0].id).toBe(1)
+  expect(users[1].id).toBe(2)
   expect((await getUsers()).length).toBeGreaterThan(0)
 })
