@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple framework using Koa and Typescript",
   "scripts": {
+    "rimraf": "rm -rf bin && rm -rf tsconfig.tsbuildinfo",
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
     "test": "jest",
