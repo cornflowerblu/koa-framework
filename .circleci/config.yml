@@ -4,6 +4,11 @@ jobs:
     docker:
       - image: node:lts-alpine
 
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      
       - setup_remote_docker:
           docker_layer_caching: true
 
@@ -17,11 +22,6 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run: yarn ci:docker
-
-    working_directory: ~/repo
-
-    steps:
-      - checkout
 
       # Download and cache dependencies
       - restore_cache:
