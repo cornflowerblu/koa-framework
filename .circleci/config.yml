@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - checkout
-      
+
       - setup_remote_docker:
           docker_layer_caching: true
 
@@ -21,7 +21,7 @@ jobs:
             curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
-      - run: yarn ci:docker
+      # - run: yarn ci:docker <-- later if I want to push the image to docker hub
 
       # Download and cache dependencies
       - restore_cache:
