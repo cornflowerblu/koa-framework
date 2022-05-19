@@ -13,8 +13,7 @@ jobs:
       - run:
           name: Install Docker & Compose
           command: |
-           apk add docker docker-compose
-           docker-compose up -d
+           apk add docker docker-compose           
       - run:
           name: Install Docker client
           command: |
@@ -44,6 +43,7 @@ jobs:
       - run:
           name: Integration Tests
           command: |
-            ls -lah
+            docker-compose up -d
+            sleep 15
             npm run ci:migrate
             npm run ci:test
