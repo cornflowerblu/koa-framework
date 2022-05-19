@@ -12,5 +12,3 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 'prisma'
       MYSQL_DATABASE: 'tests'
-    depends_on: 
-      - app
