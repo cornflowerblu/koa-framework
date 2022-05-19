@@ -1,6 +1,6 @@
 # Welcome to Koa!
 
-You may have heard of Koa before, and much like React, it strives to come out of the gates with as few dependencies as possible. I recently have been growing more akin to the idea of building your own framework for your own unique business needs rather than grabbing a boilerplate of the shelf, so this is my attempt to do so. 
+You may have heard of Koa before, and much like React, it strives to come out of the gates with as few dependencies as possible. I recently have been growing more akin to the idea of building your own framework for your own unique business needs rather than grabbing a boilerplate off the shelf, so this is my attempt to do so. 
 
 
 # What this is NOT
