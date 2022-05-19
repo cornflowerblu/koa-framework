@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple framework using Koa and Typescript",
   "scripts": {
+    "dev": "tsnd --respawn src/index.ts",
     "build": "tsc",
     "start": "node bin/index.js"
   },
@@ -10,10 +11,11 @@
   "author": "Roger Urich",
   "license": "MIT",
   "dependencies": {
-    "koa": "2.13.4",
-    "typescript": "4.6.4"
+    "koa": "2.13.4"
   },
   "devDependencies": {
-    "@types/koa": "2.13.4"
+    "@types/koa": "2.13.4",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "4.6.4"
   }
 }
