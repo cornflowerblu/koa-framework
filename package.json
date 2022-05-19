@@ -6,7 +6,7 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down -v",
     "test": "npm run prettier && npm run docker:up && docker ps && dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test jest -i",
-    "ci:test": "dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test jest -i",
+    "ci:test": "npx prisma migrate deploy --url=mysql://root:prisma@localhost:5000/tests jest -i",
     "rimraf": "rm -rf bin && rm -rf tsconfig.tsbuildinfo",
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
