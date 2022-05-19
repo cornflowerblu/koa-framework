@@ -23,3 +23,27 @@ export async function createNewUser(ctx: Koa.Context) {
       })
   }
 }
+
+export async function getManyUsers(ctx: Koa.Context) {
+  try {
+    let users: Array<User> = await getUsers()
+    if (users.length === 0) {
+      ;(ctx.status = 404),
+        (ctx.body = {
+          success: false,
+          users,
+        })
+    } else
+      ctx.body = {
+        success: true,
+        users,
+      }
+  } catch (error) {
+    console.log(error)
+    ;(ctx.status = 404),
+      (ctx.body = {
+        success: false,
+        users: Boom.notFound().output.payload,
+      })
+  }
+}
