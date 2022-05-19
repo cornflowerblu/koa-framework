@@ -45,5 +45,5 @@ jobs:
           name: Integration Tests
           command: |
             ls -lah
-            npm ci:migrate
-            npm ci:test
+            npm run ci:migrate
+            npm run ci:test
