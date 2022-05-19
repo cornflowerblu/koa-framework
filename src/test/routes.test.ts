@@ -1,8 +1,8 @@
-import getRoute from '../router'
+import { getRoute } from '../router'
 
 test('route path is returned', () => {
   let routeData = {
-    name: 'home',
+    name: 'home page protected',
     path: '/',
   }
 

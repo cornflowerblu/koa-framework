@@ -1,0 +1,20 @@
+# Set the version of docker compose to use
+version: '3.9'
+
+# The containers that compose the project
+services:
+  db:
+    image: mysql:oracle
+    restart: 'no'
+    container_name: integration-tests-db
+    ports:
+      - '5000:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'prisma'
+      MYSQL_DATABASE: 'tests'
+    depends_on: 
+      - app
+  app:
+    image: httpd
+    container_name: BS
+    
