@@ -11,7 +11,7 @@ jobs:
   build:
     docker:
       # replace with your preferred image
-      - image: node:lts-alpine
+      - image: .
     steps:
       - docker/build:
           image: koa-framework 
