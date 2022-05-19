@@ -3,28 +3,28 @@ jobs:
   build:
     docker:
       - image: node:lts-alpine
-
+      - image: mysql:oracle
+    environment:
+      MYSQL_ROOT_PASSWORD: 'prisma'
+      MYSQL_DATABASE: 'tests'
+    
     working_directory: ~/repo
 
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run:
-          name: Install Docker & Compose
+          name: Install Dockerize
           command: |
-           apk add docker docker-compose           
-      - run:
-          name: Install Docker client
-          command: |
-            apk add curl
-            set -x
-            VER="18.06.3-ce"
-            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
-            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
-            mv /tmp/docker/* /usr/bin
-      # - run: yarn ci:docker <-- later if I want to push the image to docker hub
+            apk add wget
+            wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
+        environment:
+          DOCKERIZE_VERSION: v0.3.0
+      
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+          
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -43,7 +43,5 @@ jobs:
       - run:
           name: Integration Tests
           command: |
-            docker-compose up -d
-            sleep 15
             npm run ci:migrate
             npm run ci:test
