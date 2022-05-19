@@ -2,13 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-    - image: node:lts-alpine
-    - image: mysql:oracle
+      - image: node:lts-alpine
+      - image: mysql:oracle
     environment:
       MYSQL_ROOT_PASSWORD: 'prisma'
       MYSQL_DATABASE: 'tests'
-    
-    working_directory: ~/repo
 
     steps:
       - checkout
