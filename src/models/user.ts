@@ -4,13 +4,12 @@ import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
 
-export type UserReturn =
-  | {
-      statusCode: number
-      error: string
-      message: string
-    }
-  | User
+export type UserReturn<T> = {
+  statusCode: number
+  error: string
+  message: string
+  user: T
+}
 
 export const getUsers = async (): Promise<Array<User>> =>
   await prisma.user.findMany()
@@ -22,7 +21,7 @@ export const getUserById = async (id: number): Promise<User | null> =>
     },
   })
 
-export const createUser = async (user: User): Promise<Partial<UserReturn>> => {
+export const createUser = async (user: User): Promise<any> => {
   const securePassword = await bcrypt.hash(user.password, 10)
   try {
     user = await prisma.user.create({

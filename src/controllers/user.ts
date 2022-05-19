@@ -1,10 +1,11 @@
 import Koa from 'koa'
 import Boom from '@hapi/boom'
-import { getUsers, createUser } from '../models/user'
+import { getUsers, createUser, UserReturn } from '../models/user'
+import { User } from '@prisma/client'
 
 export async function createNewUser(ctx: Koa.Context) {
   try {
-    const user: any = await createUser(ctx.request.body)
+    const user: UserReturn<User> = await createUser(ctx.request.body)
     if (user.statusCode === 400) {
       ctx.body = { success: false, user }
       ctx.status = 400
