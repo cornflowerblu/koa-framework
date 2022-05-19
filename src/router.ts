@@ -1,7 +1,7 @@
 import invariant from 'tiny-invariant'
 import routes from './constants/routes'
 
-export type Routes = {
+type Routes = {
   name: string
   path: string
 }
