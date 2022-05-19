@@ -5,9 +5,10 @@ import faker from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
+prisma.$connect
 
 beforeAll(async () => {
-  prisma.$connect
+  // Clean up before tests
   await prisma.user.deleteMany()
 })
 
@@ -60,7 +61,6 @@ describe('User API', () => {
   })
 })
 
-afterAll(async () => {
-  await prisma.user.deleteMany()
+afterAll(() => {
   prisma.$disconnect
 })

@@ -1,12 +1,13 @@
 import { createUser, getUserById, getUsers } from '../../models/user'
 import { faker } from '@faker-js/faker'
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient()
+prisma.$connect
 
 beforeAll(async () => {
   // Clean before tests
-  prisma.$connect
   await prisma.user.deleteMany()
 
   const user1: any = await createUser({
@@ -42,8 +43,11 @@ describe('Users', () => {
   })
 })
 
-afterAll(async () => {
-  // Clean after tests
-  await prisma.user.deleteMany()
+it('should hash passwords correctly', async () => {
+  const securePassword = await bcrypt.hash('password', 10)
+  expect(securePassword !== 'password')
+})
+
+afterAll(() => {
   prisma.$disconnect
 })

@@ -21,7 +21,7 @@ export const getRoute = (name: string): string => {
 
 export const router = new Router()
 
-// The list of routes. Name and Path are required. 
+// The list of routes. Name and Path are required.
 const routes: Array<Routes> = [
   {
     name: 'home page protected',
