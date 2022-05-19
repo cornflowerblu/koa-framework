@@ -41,6 +41,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
+      - testing
       - run:
         name: Integration Tests
         command: |
