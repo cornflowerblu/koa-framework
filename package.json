@@ -6,7 +6,7 @@
     "rimraf": "rm -rf bin && rm -rf tsconfig.tsbuildinfo",
     "prettier": "npx prettier --write ./src",
     "dev": "tsnd --respawn src/server.ts",
-    "test": "jest && npx prettier --check ./src",
+    "test": "jest && npm run prettier",
     "build": "tsc && rm -rf bin/test",
     "start": "node bin/server.js"
   },
