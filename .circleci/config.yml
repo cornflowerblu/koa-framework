@@ -41,10 +41,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - testing
       - run:
-        name: Integration Tests
-        command: |
-          la -lah
-          npm ci:migrate
-          npm ci:test
+          name: Integration Tests
+          command: |
+            la -lah
+            npm ci:migrate
+            npm ci:test
