@@ -44,7 +44,9 @@ jobs:
 
       - run:
           name: Build Docker Image
-          command: docker build -t rogerdurich/koa-framework .
+          command: |
+            ls -lah
+            docker build -t rogerdurich/koa-framework .
       
       - run:
           name: Login & Ship Image
