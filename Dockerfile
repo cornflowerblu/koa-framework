@@ -2,7 +2,8 @@ FROM node:lts-alpine AS builder
 WORKDIR /home/koa
 COPY . /home/koa/
 RUN npm install --audit false
-RUN npm run ci:generate
+RUN npm i -g prisma
+RUN prisma generate
 RUN npm run build
 
 
