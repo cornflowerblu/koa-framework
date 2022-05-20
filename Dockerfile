@@ -2,8 +2,9 @@ FROM node:lts-alpine AS builder
 WORKDIR /home/koa
 COPY . /home/koa/
 RUN npm ci --no-audit
-RUN npm run build
 RUN npm run ci:generate
+RUN npm run build
+
 
 
 FROM node:lts-alpine
