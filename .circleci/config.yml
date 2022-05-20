@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     docker:
       - image: node:lts-alpine
       - image: cimg/mysql:8.0
@@ -33,7 +33,7 @@ jobs:
       # run tests!
       - run: npm run ci:test
 
-  build:
+  push:
     docker:
       - image: node:lts-alpine
     
