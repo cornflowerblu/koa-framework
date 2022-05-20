@@ -45,14 +45,16 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true      
       
-      - run:
-          name: Install Docker
-          command: apk add docker
+      # - run:
+      #     name: Install Docker
+      #     command: apk add docker
       
       - run:
-          name: Install Docker client
+          name: Install Docker
           command: |
-            apk add --update docker openr
+            apk update
+            apk add docker docker-compose
+            rc-update add docker boot
             service docker start
 
       - run:
