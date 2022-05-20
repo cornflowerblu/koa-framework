@@ -6,6 +6,7 @@
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down -v",
     "test": "npm run prettier && npm run docker:up && docker ps && dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test jest -i",
+    "ci:generate":"npx prisma generate",
     "ci:migrate": "dotenv -e .env.test -- npx prisma migrate dev --name tests",
     "ci:test":"dotenv -e .env.test jest -i",
     "docker:build": "docker build -t rogerdurich/koa-framework:latest .",

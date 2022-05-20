@@ -37,8 +37,6 @@ describe('Users', () => {
 
   it('should retrieve many users', async () => {
     const users = await getUsers()
-    expect(users[0]?.id).toBeGreaterThanOrEqual(1)
-    expect(users[1]?.id).toBeGreaterThanOrEqual(1)
     expect((await getUsers()).length).toBeGreaterThan(0)
   })
 })
