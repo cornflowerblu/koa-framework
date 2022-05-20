@@ -1,7 +1,7 @@
 FROM node:lts-alpine AS builder
 WORKDIR /home/koa
 COPY . /home/koa/
-RUN npm ci --audit false
+RUN npm install --audit false
 RUN npm run ci:generate
 RUN npm run build
 
