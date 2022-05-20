@@ -54,7 +54,6 @@ jobs:
           command: |
             apk update
             apk add docker docker-compose
-            rc-update add docker boot
             service docker start
 
       - run:
