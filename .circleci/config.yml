@@ -37,7 +37,7 @@ jobs:
 
   push:
     docker:
-      - image: node:lts-alpine
+      - image: docker:stable-git
 
     steps:
       - checkout
@@ -45,16 +45,16 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true      
       
+      - run:
+          name: Update Docker
+          command: apk update
+      
       # - run:
       #     name: Install Docker
-      #     command: apk add docker
-      
-      - run:
-          name: Install Docker
-          command: |
-            apk update
-            apk add docker docker-compose
-            service docker start
+      #     command: |
+      #       apk update
+      #       apk add docker docker-compose
+      #       service docker start
 
       - run:
           name: Build Docker Image
