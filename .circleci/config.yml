@@ -48,13 +48,6 @@ jobs:
       - run:
           name: Update Docker
           command: apk update
-      
-      # - run:
-      #     name: Install Docker
-      #     command: |
-      #       apk update
-      #       apk add docker docker-compose
-      #       service docker start
 
       - run:
           name: Build Docker Image
