@@ -3,7 +3,8 @@ WORKDIR /home/koa
 COPY . /home/koa/
 RUN npm ci --audit false
 RUN npm run build
-RUN npx prisma generate
+RUN npx prisma migrate deploy
+
 
 FROM node:lts-alpine
 WORKDIR /app
