@@ -38,6 +38,7 @@ jobs:
       - image: node:lts-alpine
 
     steps:
+      - checkout
       - run:
           name: Install Docker
           command: apk add docker
