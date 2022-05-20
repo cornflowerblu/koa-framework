@@ -34,6 +34,9 @@ jobs:
       - run: npm run ci:test
 
   build:
+    docker:
+      - image: node:lts-alpine
+    
     steps:
       - setup_remote_docker:
           docker_layer_caching: true
